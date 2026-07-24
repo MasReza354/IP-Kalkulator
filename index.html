@@ -1,68 +1,62 @@
 <!DOCTYPE html>
 <html class="light" lang="id">
-
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>IP Calculator Indonesia - Subnetting & Edukasi Jaringan</title>
     <!-- Tailwind CSS with Forms and Container Queries Plugins -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <!-- Google Fonts: Material Symbols Outlined, Inter, JetBrains Mono -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "outline": "#948e9e",
-                        "outline-variant": "#494453",
-                        "surface-dim": "#0d131f",
-                        "background": "#0d131f",
-                        "primary-fixed": "#e9ddff",
-                        "surface-container": "#1a202c",
-                        "primary": "#d0bcff",
-                        "surface": "#0d131f",
-                        "tertiary": "#74db9d",
-                        "primary-container": "#6b46c1",
-                        "secondary-container": "#234a7a",
-                        "surface-variant": "#2f3542",
-                        "on-surface": "#dde2f3",
-                        "on-surface-variant": "#cbc3d5",
-                        "brand-surface": "#2D3748",
-                        "brand-surface-inset": "#1A202C",
-                        "brand-border": "#2C5282",
-                        "brand-success": "#38A169"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "fontFamily": {
-                        "headline-lg": ["Inter", "sans-serif"],
-                        "headline-md": ["Inter", "sans-serif"],
-                        "body-md": ["Inter", "sans-serif"],
-                        "code-md": ["JetBrains Mono", "monospace"],
-                        "body-lg": ["Inter", "sans-serif"],
-                        "label-sm": ["Inter", "sans-serif"]
-                    }
-                },
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#948e9e",
+                    "outline-variant": "#494453",
+                    "surface-dim": "#0d131f",
+                    "background": "#0d131f",
+                    "primary-fixed": "#e9ddff",
+                    "surface-container": "#1a202c",
+                    "primary": "#d0bcff",
+                    "surface": "#0d131f",
+                    "tertiary": "#74db9d",
+                    "primary-container": "#6b46c1",
+                    "secondary-container": "#234a7a",
+                    "surface-variant": "#2f3542",
+                    "on-surface": "#dde2f3",
+                    "on-surface-variant": "#cbc3d5",
+                    "brand-surface": "#2D3748",
+                    "brand-surface-inset": "#1A202C",
+                    "brand-border": "#2C5282",
+                    "brand-success": "#38A169"
             },
-        }
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter", "sans-serif"],
+                    "headline-md": ["Inter", "sans-serif"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "code-md": ["JetBrains Mono", "monospace"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "label-sm": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
     </script>
     <style>
         .custom-toggle:checked {
             background-color: #6B46C1;
             border-color: #6B46C1;
         }
-
         .custom-toggle:checked::after {
             transform: translateX(100%);
             border-color: white;
@@ -70,72 +64,49 @@
 
         /* Blinking Animation for Notice Text */
         @keyframes blink-glow {
-
-            0%,
-            100% {
-                opacity: 1;
-                text-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
-                color: #f59e0b;
-            }
-
-            50% {
-                opacity: 0.35;
-                text-shadow: none;
-                color: #d97706;
-            }
+            0%, 100% { opacity: 1; text-shadow: 0 0 10px rgba(245, 158, 11, 0.8); color: #f59e0b; }
+            50% { opacity: 0.35; text-shadow: none; color: #d97706; }
         }
-
         .animate-blink {
             animation: blink-glow 1.2s infinite ease-in-out;
         }
     </style>
 </head>
+<body class="bg-slate-100 dark:bg-background text-slate-900 dark:text-on-surface min-h-screen flex flex-col font-body-md transition-colors duration-200">
+    <!-- Top Navigation (Mobile Responsive & Widescreen max-w-[1440px]) -->
+    <header class="bg-white dark:bg-surface border-b border-slate-200 dark:border-outline-variant sticky top-0 z-50 shadow-sm transition-colors duration-200">
+        <div class="flex flex-col sm:flex-row justify-between items-center px-4 md:px-6 py-2.5 sm:py-3 w-full max-w-[1440px] mx-auto gap-2 sm:gap-4">
+            
+            <!-- Mobile & Desktop Brand Logo & Header Controls Row -->
+            <div class="flex justify-between items-center w-full sm:w-auto gap-3">
+                <div class="font-headline-md text-base sm:text-lg font-bold text-purple-700 dark:text-primary flex items-center gap-2 cursor-pointer" onclick="document.querySelector('[data-tab=\'kalkulator\']').click()">
+                    <span class="material-symbols-outlined text-purple-700 dark:text-primary">lan</span>
+                    IP Calculator <span class="text-xs bg-primary-container text-white px-2 py-0.5 rounded font-normal font-sans hidden sm:inline">Indonesia</span>
+                </div>
 
-<body
-    class="bg-slate-100 dark:bg-background text-slate-900 dark:text-on-surface min-h-screen flex flex-col font-body-md transition-colors duration-200">
-    <!-- Top Navigation (Widescreen max-w-[1440px]) -->
-    <header
-        class="bg-white dark:bg-surface border-b border-slate-200 dark:border-outline-variant sticky top-0 z-50 shadow-sm transition-colors duration-200">
-        <div class="flex justify-between items-center px-4 md:px-6 py-3 w-full max-w-[1440px] mx-auto gap-2">
-            <div class="font-headline-md text-headline-md font-bold text-purple-700 dark:text-primary flex items-center gap-2 cursor-pointer"
-                onclick="document.querySelector('[data-tab=\'kalkulator\']').click()">
-                <span class="material-symbols-outlined text-purple-700 dark:text-primary">lan</span>
-                IP Calculator <span
-                    class="text-xs bg-primary-container text-white px-2 py-0.5 rounded font-normal font-sans hidden sm:inline">Indonesia</span>
-            </div>
+                <!-- Header Controls: Mode Belajar & Theme Toggle Buttons -->
+                <div class="flex items-center gap-2">
+                    <!-- Mode Belajar Button -->
+                    <button type="button" class="mode-awam-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-slate-300 dark:border-brand-border bg-slate-50 dark:bg-brand-surface text-slate-800 dark:text-on-surface hover:bg-slate-200 dark:hover:bg-brand-surface-inset transition-colors text-xs font-medium cursor-pointer shadow-xs" title="Aktifkan/nonaktifkan Penjelasan Sederhana Mode Belajar">
+                        <span class="material-symbols-outlined text-sm text-purple-600 dark:text-primary">school</span>
+                        <span class="hidden sm:inline font-bold">Mode Belajar</span>
+                        <span class="mode-awam-dot w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-xs"></span>
+                    </button>
 
-            <!-- Navigation Tabs -->
-            <nav class="flex gap-3 md:gap-6 items-center text-xs md:text-sm">
-                <a class="nav-link text-primary border-b-2 border-primary font-bold cursor-pointer hover:text-primary transition-colors py-1"
-                    data-tab="kalkulator" href="#">Kalkulator</a>
-                <a class="nav-link text-slate-600 dark:text-on-surface-variant font-medium cursor-pointer hover:text-primary transition-colors py-1"
-                    data-tab="tabel" href="#">Tabel CIDR</a>
-                <a class="nav-link text-slate-600 dark:text-on-surface-variant font-medium cursor-pointer hover:text-primary transition-colors py-1"
-                    data-tab="edukasi" href="#">Materi Singkat</a>
-            </nav>
-
-            <div class="flex items-center gap-3">
-                <!-- Theme Toggle Button (Light/Dark Mode) -->
-                <button id="themeToggleBtn" type="button"
-                    class="flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-slate-300 dark:border-brand-border bg-slate-50 dark:bg-brand-surface text-slate-800 dark:text-on-surface hover:bg-slate-200 dark:hover:bg-brand-surface-inset transition-colors text-xs font-medium cursor-pointer shadow-xs"
-                    title="Ganti Tema Dark / Light Mode">
-                    <span id="themeToggleIcon"
-                        class="material-symbols-outlined text-sm text-amber-500">light_mode</span>
-                    <span id="themeToggleText" class="hidden sm:inline font-bold">Light Mode</span>
-                </button>
-
-                <!-- Mode Awam / Belajar Toggle Switch -->
-                <div class="hidden md:flex items-center gap-2 border-l border-slate-200 dark:border-brand-border pl-3">
-                    <span class="font-label-sm text-xs text-slate-600 dark:text-on-surface-variant">Mode Belajar</span>
-                    <label class="relative inline-flex items-center cursor-pointer"
-                        title="Aktifkan/nonaktifkan penjelasan sederhana">
-                        <input checked="" class="sr-only peer custom-toggle" id="modeAwamToggle" type="checkbox" />
-                        <div
-                            class="w-9 h-5 bg-slate-300 dark:bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all">
-                        </div>
-                    </label>
+                    <!-- Theme Toggle Button -->
+                    <button type="button" class="theme-toggle-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-slate-300 dark:border-brand-border bg-slate-50 dark:bg-brand-surface text-slate-800 dark:text-on-surface hover:bg-slate-200 dark:hover:bg-brand-surface-inset transition-colors text-xs font-medium cursor-pointer shadow-xs" title="Ganti Tema Dark / Light Mode">
+                        <span class="theme-toggle-icon material-symbols-outlined text-sm text-amber-500">light_mode</span>
+                        <span class="theme-toggle-text hidden sm:inline font-bold">Light Mode</span>
+                    </button>
                 </div>
             </div>
+            
+            <!-- Navigation Tabs (Centered Row on Mobile, Inline on Desktop) -->
+            <nav class="flex justify-center sm:justify-start gap-4 md:gap-6 w-full sm:w-auto border-t sm:border-t-0 border-slate-100 dark:border-brand-border pt-2 sm:pt-0 text-xs md:text-sm font-medium">
+                <a class="nav-link text-primary border-b-2 border-primary font-bold cursor-pointer hover:text-primary transition-colors py-1" data-tab="kalkulator" href="#">Kalkulator</a>
+                <a class="nav-link text-slate-600 dark:text-on-surface-variant font-medium cursor-pointer hover:text-primary transition-colors py-1" data-tab="tabel" href="#">Tabel CIDR</a>
+                <a class="nav-link text-slate-600 dark:text-on-surface-variant font-medium cursor-pointer hover:text-primary transition-colors py-1" data-tab="edukasi" href="#">Materi Singkat</a>
+            </nav>
         </div>
     </header>
 
@@ -146,55 +117,39 @@
         <div id="tab-kalkulator" class="tab-section flex flex-col gap-6">
             <!-- Hero Section -->
             <section class="flex flex-col gap-2 mb-2 text-center">
-                <h1 class="font-headline-lg text-headline-lg text-slate-900 dark:text-on-surface">IP Calculator
-                    Indonesia</h1>
-                <p class="font-body-lg text-body-lg text-slate-600 dark:text-on-surface-variant">Kalkulator Subnetting
-                    Lengkap &amp; Mudah Dipahami</p>
+                <h1 class="font-headline-lg text-headline-lg text-slate-900 dark:text-on-surface">IP Calculator Indonesia</h1>
+                <p class="font-body-lg text-body-lg text-slate-600 dark:text-on-surface-variant">Kalkulator Subnetting Lengkap &amp; Mudah Dipahami</p>
             </section>
 
             <!-- Input Card -->
-            <section
-                class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 md:p-8 flex flex-col gap-6 w-full max-w-2xl mx-auto rounded-sm shadow-md transition-colors">
+            <section class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 md:p-8 flex flex-col gap-6 w-full max-w-2xl mx-auto rounded-sm shadow-md transition-colors">
                 <form id="calculatorForm" class="flex flex-col gap-6 w-full">
                     <!-- IP Address Input (Kosong secara default, placeholder 192.168.1.1) -->
                     <div class="flex flex-col gap-2 w-full">
-                        <label
-                            class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider"
-                            for="ipAddress">Alamat IP (IPv4)</label>
+                        <label class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider" for="ipAddress">Alamat IP (IPv4)</label>
                         <div class="relative">
-                            <span
-                                class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-outline">language</span>
-                            <input
-                                class="w-full bg-slate-50 dark:bg-brand-surface-inset border border-slate-300 dark:border-brand-border text-slate-900 dark:text-on-surface pl-10 pr-4 py-3 font-code-md text-code-md focus:outline-none focus:border-primary-container transition-colors rounded-sm"
-                                id="ipAddress" placeholder="192.168.1.1" type="text" value="" autocomplete="off" />
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-outline">language</span>
+                            <input class="w-full bg-slate-50 dark:bg-brand-surface-inset border border-slate-300 dark:border-brand-border text-slate-900 dark:text-on-surface pl-10 pr-4 py-3 font-code-md text-code-md focus:outline-none focus:border-primary-container transition-colors rounded-sm" id="ipAddress" placeholder="192.168.1.1" type="text" value="" autocomplete="off"/>
                         </div>
                         <!-- Error Feedback -->
-                        <div id="ipErrorMsg"
-                            class="font-body-md text-xs text-red-500 dark:text-red-400 mt-1 font-medium hidden"></div>
+                        <div id="ipErrorMsg" class="font-body-md text-xs text-red-500 dark:text-red-400 mt-1 font-medium hidden"></div>
                     </div>
 
                     <!-- CIDR Select (Kosong secara default) -->
                     <div class="flex flex-col gap-2 w-full">
-                        <label
-                            class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider"
-                            for="cidr">Notasi CIDR / Subnet</label>
-                        <select
-                            class="w-full bg-slate-50 dark:bg-brand-surface-inset border border-slate-300 dark:border-brand-border text-slate-900 dark:text-on-surface px-4 py-3 font-code-md text-code-md focus:outline-none focus:border-primary-container transition-colors rounded-sm cursor-pointer"
-                            id="cidr">
+                        <label class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider" for="cidr">Notasi CIDR / Subnet</label>
+                        <select class="w-full bg-slate-50 dark:bg-brand-surface-inset border border-slate-300 dark:border-brand-border text-slate-900 dark:text-on-surface px-4 py-3 font-code-md text-code-md focus:outline-none focus:border-primary-container transition-colors rounded-sm cursor-pointer" id="cidr">
                             <option value="" disabled selected>-- Pilih Prefix CIDR --</option>
                         </select>
                     </div>
 
                     <!-- Action Buttons: Hitung Subnet & Reset (Side-by-side) -->
                     <div class="flex flex-col sm:flex-row gap-3 mt-2">
-                        <button type="button" id="calcBtn"
-                            class="flex-1 bg-primary-container hover:bg-[#7e56d4] active:bg-[#522aa7] text-white px-6 py-3 font-label-sm text-xs md:text-sm font-bold uppercase tracking-wider transition-colors border border-primary-container h-[48px] flex items-center justify-center gap-2 rounded-sm cursor-pointer shadow-sm">
+                        <button type="button" id="calcBtn" class="flex-1 bg-primary-container hover:bg-[#7e56d4] active:bg-[#522aa7] text-white px-6 py-3 font-label-sm text-xs md:text-sm font-bold uppercase tracking-wider transition-colors border border-primary-container h-[48px] flex items-center justify-center gap-2 rounded-sm cursor-pointer shadow-sm">
                             <span class="material-symbols-outlined" style="font-size: 18px;">calculate</span>
                             Hitung Subnet
                         </button>
-                        <button type="button" id="resetBtn"
-                            class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 px-6 py-3 font-label-sm text-xs md:text-sm font-bold uppercase tracking-wider transition-colors border border-slate-300 dark:border-slate-600 h-[48px] flex items-center justify-center gap-2 rounded-sm cursor-pointer shadow-sm"
-                            title="Reset Form & Hasil">
+                        <button type="button" id="resetBtn" class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 px-6 py-3 font-label-sm text-xs md:text-sm font-bold uppercase tracking-wider transition-colors border border-slate-300 dark:border-slate-600 h-[48px] flex items-center justify-center gap-2 rounded-sm cursor-pointer shadow-sm" title="Reset Form & Hasil">
                             <span class="material-symbols-outlined" style="font-size: 18px;">restart_alt</span>
                             Reset
                         </button>
@@ -203,93 +158,66 @@
             </section>
 
             <!-- Results List (Default angka 0 sebelum diisi data) -->
-            <section id="results-section"
-                class="w-full max-w-2xl mx-auto mt-4 bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border flex flex-col divide-y divide-slate-200 dark:divide-brand-border rounded-sm shadow-md transition-colors">
+            <section id="results-section" class="w-full max-w-2xl mx-auto mt-4 bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border flex flex-col divide-y divide-slate-200 dark:divide-brand-border rounded-sm shadow-md transition-colors">
                 <!-- Row: Network -->
                 <div class="flex flex-col md:flex-row p-5 gap-4 md:items-center">
                     <div class="w-full md:w-1/3 flex flex-col gap-1">
-                        <span
-                            class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider">Alamat
-                            Network</span>
-                        <div class="awam-explanation font-body-md text-xs text-sky-700 dark:text-sky-300 font-medium">
-                            Awal jaringan, bukan untuk perangkat. Berfungsi sebagai identitas kelompok jaringan.</div>
+                        <span class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider">Alamat Network</span>
+                        <div class="awam-explanation font-body-md text-xs text-sky-700 dark:text-sky-300 font-medium">Awal jaringan, bukan untuk perangkat. Berfungsi sebagai identitas kelompok jaringan.</div>
                     </div>
                     <div class="w-full md:w-2/3 flex items-center gap-2">
-                        <span id="resNetwork"
-                            class="font-code-md text-xl font-bold text-slate-900 dark:text-on-surface">0</span>
-                        <span id="resCidrBadge"
-                            class="bg-purple-700 dark:bg-brand-border text-white font-code-md text-[10px] font-bold px-2 py-0.5 rounded-sm">/0</span>
+                        <span id="resNetwork" class="font-code-md text-xl font-bold text-slate-900 dark:text-on-surface">0</span>
+                        <span id="resCidrBadge" class="bg-purple-700 dark:bg-brand-border text-white font-code-md text-[10px] font-bold px-2 py-0.5 rounded-sm">/0</span>
                     </div>
                 </div>
 
                 <!-- Row: Broadcast -->
                 <div class="flex flex-col md:flex-row p-5 gap-4 md:items-center">
                     <div class="w-full md:w-1/3 flex flex-col gap-1">
-                        <span
-                            class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider">Alamat
-                            Broadcast</span>
-                        <div class="awam-explanation font-body-md text-xs text-sky-700 dark:text-sky-300 font-medium">
-                            Tujuan pesan massal jaringan. Dipakai untuk mengirim data ke semua perangkat sekaligus.
-                        </div>
+                        <span class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider">Alamat Broadcast</span>
+                        <div class="awam-explanation font-body-md text-xs text-sky-700 dark:text-sky-300 font-medium">Tujuan pesan massal jaringan. Dipakai untuk mengirim data ke semua perangkat sekaligus.</div>
                     </div>
                     <div class="w-full md:w-2/3">
-                        <span id="resBroadcast"
-                            class="font-code-md text-xl font-bold text-slate-900 dark:text-on-surface">0</span>
+                        <span id="resBroadcast" class="font-code-md text-xl font-bold text-slate-900 dark:text-on-surface">0</span>
                     </div>
                 </div>
 
                 <!-- Row: Rentang Host (Default 0, Separator: s/d) -->
                 <div class="flex flex-col md:flex-row p-5 gap-4 md:items-center">
                     <div class="w-full md:w-1/3 flex flex-col gap-1">
-                        <span
-                            class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider">Rentang
-                            IP Host</span>
-                        <div class="awam-explanation font-body-md text-xs text-sky-700 dark:text-sky-300 font-medium">IP
-                            untuk perangkat user. Alamat yang aman dipasang pada komputer, HP, atau printer.</div>
+                        <span class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider">Rentang IP Host</span>
+                        <div class="awam-explanation font-body-md text-xs text-sky-700 dark:text-sky-300 font-medium">IP untuk perangkat user. Alamat yang aman dipasang pada komputer, HP, atau printer.</div>
                     </div>
                     <div class="w-full md:w-2/3">
-                        <span id="resHostRange"
-                            class="font-code-md text-xl font-bold text-slate-900 dark:text-on-surface">0</span>
+                        <span id="resHostRange" class="font-code-md text-xl font-bold text-slate-900 dark:text-on-surface">0</span>
                     </div>
                 </div>
 
                 <!-- Row: Total Host -->
                 <div class="flex flex-col md:flex-row p-5 gap-4 md:items-center">
                     <div class="w-full md:w-1/3 flex flex-col gap-1">
-                        <span
-                            class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider">Total
-                            Host Usable</span>
-                        <div class="awam-explanation font-body-md text-xs text-sky-700 dark:text-sky-300 font-medium">
-                            Kapasitas maksimal perangkat yang dapat terhubung dalam satu subnet ini.</div>
+                        <span class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider">Total Host Usable</span>
+                        <div class="awam-explanation font-body-md text-xs text-sky-700 dark:text-sky-300 font-medium">Kapasitas maksimal perangkat yang dapat terhubung dalam satu subnet ini.</div>
                     </div>
                     <div class="w-full md:w-2/3">
-                        <span id="resTotalHost"
-                            class="font-headline-md text-2xl font-bold text-purple-700 dark:text-primary">0</span>
+                        <span id="resTotalHost" class="font-headline-md text-2xl font-bold text-purple-700 dark:text-primary">0</span>
                     </div>
                 </div>
 
                 <!-- Row: Subnet Mask (HIGH CONTRAST LABELS, Default 0) -->
                 <div class="flex flex-col md:flex-row p-5 gap-4">
                     <div class="w-full md:w-1/3 flex flex-col gap-1">
-                        <span
-                            class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider">Subnet
-                            Mask</span>
-                        <div class="awam-explanation font-body-md text-xs text-sky-700 dark:text-sky-300 font-medium">
-                            Pembatas porsi network &amp; host. Menentukan batas antara identitas kelompok dan perangkat.
-                        </div>
+                        <span class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider">Subnet Mask</span>
+                        <div class="awam-explanation font-body-md text-xs text-sky-700 dark:text-sky-300 font-medium">Pembatas porsi network &amp; host. Menentukan batas antara identitas kelompok dan perangkat.</div>
                     </div>
-                    <div
-                        class="w-full md:w-2/3 flex flex-col gap-2 font-code-md text-sm text-slate-900 dark:text-on-surface">
+                    <div class="w-full md:w-2/3 flex flex-col gap-2 font-code-md text-sm text-slate-900 dark:text-on-surface">
                         <div class="flex items-center">
-                            <span
-                                class="text-slate-600 dark:text-slate-300 font-semibold mr-2 text-xs w-16 inline-block">Desimal:</span>
+                            <span class="text-slate-600 dark:text-slate-300 font-semibold mr-2 text-xs w-16 inline-block">Desimal:</span>
                             <span id="resMaskDecimal" class="font-bold text-slate-900 dark:text-slate-100">0</span>
                         </div>
                         <div class="flex items-baseline break-all">
-                            <span
-                                class="text-slate-600 dark:text-slate-300 font-semibold mr-2 text-xs w-16 shrink-0 inline-block">Biner:</span>
-                            <span id="resMaskBinary"
-                                class="font-bold text-slate-900 dark:text-slate-100 font-mono text-xs md:text-sm">0</span>
+                            <span class="text-slate-600 dark:text-slate-300 font-semibold mr-2 text-xs w-16 shrink-0 inline-block">Biner:</span>
+                            <span id="resMaskBinary" class="font-bold text-slate-900 dark:text-slate-100 font-mono text-xs md:text-sm">0</span>
                         </div>
                     </div>
                 </div>
@@ -297,28 +225,19 @@
 
             <!-- Visualizer (Default 0% width) -->
             <section id="visualizer-section" class="w-full max-w-2xl mx-auto flex flex-col gap-3 mt-4">
-                <h2
-                    class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider border-b border-slate-300 dark:border-brand-border pb-2">
-                    Struktur Subnet (Visualizer)</h2>
-                <div
-                    class="flex h-7 w-full border border-slate-300 dark:border-brand-border bg-slate-100 dark:bg-brand-surface-inset rounded-sm overflow-hidden shadow-xs">
-                    <div id="visNetworkBar"
-                        class="bg-primary-container h-full flex items-center justify-center font-code-md text-[11px] font-bold text-white overflow-hidden whitespace-nowrap px-2 transition-all duration-300"
-                        style="width: 0%;">
+                <h2 class="font-label-sm text-xs font-bold text-slate-700 dark:text-on-surface-variant uppercase tracking-wider border-b border-slate-300 dark:border-brand-border pb-2">Struktur Subnet (Visualizer)</h2>
+                <div class="flex h-7 w-full border border-slate-300 dark:border-brand-border bg-slate-100 dark:bg-brand-surface-inset rounded-sm overflow-hidden shadow-xs">
+                    <div id="visNetworkBar" class="bg-primary-container h-full flex items-center justify-center font-code-md text-[11px] font-bold text-white overflow-hidden whitespace-nowrap px-2 transition-all duration-300" style="width: 0%;">
                     </div>
-                    <div id="visHostBar"
-                        class="bg-secondary-container h-full flex items-center justify-center font-code-md text-[11px] font-bold text-white overflow-hidden whitespace-nowrap px-2 border-l border-slate-300 dark:border-brand-border transition-all duration-300"
-                        style="width: 0%;">
+                    <div id="visHostBar" class="bg-secondary-container h-full flex items-center justify-center font-code-md text-[11px] font-bold text-white overflow-hidden whitespace-nowrap px-2 border-l border-slate-300 dark:border-brand-border transition-all duration-300" style="width: 0%;">
                     </div>
                 </div>
             </section>
 
             <!-- Actions -->
             <section class="w-full max-w-2xl mx-auto flex justify-end mt-2">
-                <button id="copyBtn" type="button"
-                    class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border hover:bg-slate-100 dark:hover:bg-brand-surface-inset text-slate-800 dark:text-on-surface px-6 py-2.5 font-label-sm text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2 group rounded-sm cursor-pointer shadow-xs">
-                    <span id="copyBtnIcon"
-                        class="material-symbols-outlined text-slate-400 dark:text-outline group-hover:text-brand-success transition-colors text-sm">content_copy</span>
+                <button id="copyBtn" type="button" class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border hover:bg-slate-100 dark:hover:bg-brand-surface-inset text-slate-800 dark:text-on-surface px-6 py-2.5 font-label-sm text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-2 group rounded-sm cursor-pointer shadow-xs">
+                    <span id="copyBtnIcon" class="material-symbols-outlined text-slate-400 dark:text-outline group-hover:text-brand-success transition-colors text-sm">content_copy</span>
                     <span id="copyBtnText">Salin Hasil</span>
                 </button>
             </section>
@@ -328,38 +247,29 @@
         <!-- TAB 2: TABEL CIDR REFERENSI SUBNET MASK (Reordered Columns) -->
         <div id="tab-tabel" class="tab-section hidden flex flex-col gap-6">
             <section class="flex flex-col gap-2 text-center">
-                <h1 class="font-headline-lg text-headline-lg text-slate-900 dark:text-on-surface">Tabel Subnet Mask CIDR
-                    IPv4</h1>
-                <p class="font-body-lg text-body-lg text-slate-600 dark:text-on-surface-variant">Referensi Lengkap
-                    Notasi Prefix /1 hingga /32, Subnet Mask, Wildcard Mask &amp; Jumlah Host</p>
+                <h1 class="font-headline-lg text-headline-lg text-slate-900 dark:text-on-surface">Tabel Subnet Mask CIDR IPv4</h1>
+                <p class="font-body-lg text-body-lg text-slate-600 dark:text-on-surface-variant">Referensi Lengkap Notasi Prefix /1 hingga /32, Subnet Mask, Wildcard Mask &amp; Jumlah Host</p>
             </section>
 
             <!-- Table Filter & Blinking Notice Banner -->
-            <section
-                class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-4 rounded-sm flex flex-col md:flex-row justify-between items-center gap-4 shadow-md transition-colors">
+            <section class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-4 rounded-sm flex flex-col md:flex-row justify-between items-center gap-4 shadow-md transition-colors">
                 <div class="relative w-full md:w-80">
-                    <span
-                        class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-outline text-sm">search</span>
-                    <input id="cidrSearchInput" type="text" placeholder="Cari CIDR (contoh: /24, 255.255)..."
-                        class="w-full bg-slate-50 dark:bg-brand-surface-inset border border-slate-300 dark:border-brand-border text-slate-900 dark:text-on-surface pl-9 pr-4 py-2 text-xs font-code-md focus:outline-none focus:border-primary-container rounded-sm" />
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 dark:text-outline text-sm">search</span>
+                    <input id="cidrSearchInput" type="text" placeholder="Cari CIDR (contoh: /24, 255.255)..." class="w-full bg-slate-50 dark:bg-brand-surface-inset border border-slate-300 dark:border-brand-border text-slate-900 dark:text-on-surface pl-9 pr-4 py-2 text-xs font-code-md focus:outline-none focus:border-primary-container rounded-sm"/>
                 </div>
 
                 <!-- Blinking Notice Text -->
-                <div
-                    class="w-full md:w-auto text-xs text-amber-700 dark:text-amber-300 flex items-center gap-2 font-bold px-3 py-2 rounded-sm bg-amber-500/10 border border-amber-500/30">
+                <div class="w-full md:w-auto text-xs text-amber-700 dark:text-amber-300 flex items-center gap-2 font-bold px-3 py-2 rounded-sm bg-amber-500/10 border border-amber-500/30">
                     <span class="material-symbols-outlined text-amber-500 text-sm animate-bounce">touch_app</span>
-                    <span class="animate-blink">Klik pada baris tabel mana saja untuk langsung menerapkannya di
-                        Kalkulator Subnetting!</span>
+                    <span class="animate-blink">Klik pada baris tabel mana saja untuk langsung menerapkannya di Kalkulator Subnetting!</span>
                 </div>
             </section>
 
             <!-- CIDR Table Container (Subnet Biner Moved Next to Wildcard Mask) -->
-            <section
-                class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border rounded-sm overflow-x-auto shadow-md transition-colors">
+            <section class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border rounded-sm overflow-x-auto shadow-md transition-colors">
                 <table class="w-full text-left border-collapse min-w-[900px]">
                     <thead>
-                        <tr
-                            class="bg-slate-100 dark:bg-brand-surface-inset border-b border-slate-300 dark:border-brand-border text-slate-700 dark:text-on-surface-variant uppercase text-[11px] font-bold font-label-sm tracking-wider">
+                        <tr class="bg-slate-100 dark:bg-brand-surface-inset border-b border-slate-300 dark:border-brand-border text-slate-700 dark:text-on-surface-variant uppercase text-[11px] font-bold font-label-sm tracking-wider">
                             <th class="px-3 py-3">Prefix</th>
                             <th class="px-3 py-3">Subnet Mask (Desimal)</th>
                             <th class="px-3 py-3">Total IP</th>
@@ -381,59 +291,41 @@
         <!-- TAB 3: EDUKASI AWAM (MATERI SINGKAT MAC & IPV4) -->
         <div id="tab-edukasi" class="tab-section hidden flex flex-col gap-8">
             <section class="flex flex-col gap-2 text-center">
-                <h1 class="font-headline-lg text-headline-lg text-slate-900 dark:text-on-surface">Pusat Materi Singkat
-                    Jaringan</h1>
-                <p class="font-body-lg text-body-lg text-slate-600 dark:text-on-surface-variant">Rangkuman Konsep
-                    Penting Pengalamatan IP, MAC Address, Subnetting &amp; Formula Jaringan</p>
+                <h1 class="font-headline-lg text-headline-lg text-slate-900 dark:text-on-surface">Pusat Materi Singkat Jaringan</h1>
+                <p class="font-body-lg text-body-lg text-slate-600 dark:text-on-surface-variant">Rangkuman Konsep Penting Pengalamatan IP, MAC Address, Subnetting &amp; Formula Jaringan</p>
             </section>
 
             <!-- Grid Educations -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                 <!-- Card 1: MAC Address vs IPv4 Address -->
-                <div
-                    class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
+                <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
                     <div class="flex items-center gap-3 border-b border-slate-200 dark:border-brand-border pb-3">
-                        <span
-                            class="material-symbols-outlined text-purple-600 dark:text-primary text-3xl">fingerprint</span>
+                        <span class="material-symbols-outlined text-purple-600 dark:text-primary text-3xl">fingerprint</span>
                         <div>
-                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">MAC
-                                Address vs IPv4 Address</h3>
-                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Identitas Fisik Pabrik vs
-                                Alamat Lokasi Jaringan</p>
+                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">MAC Address vs IPv4 Address</h3>
+                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Identitas Fisik Pabrik vs Alamat Lokasi Jaringan</p>
                         </div>
                     </div>
                     <div class="flex flex-col gap-3 text-sm leading-relaxed text-slate-800 dark:text-on-surface">
-                        <div
-                            class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-purple-600 dark:border-primary rounded-sm">
-                            <strong class="text-purple-700 dark:text-primary block mb-1">💳 MAC Address (KTP/Nomor Seri
-                                Fisik Perangkat):</strong>
+                        <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-purple-600 dark:border-primary rounded-sm">
+                            <strong class="text-purple-700 dark:text-primary block mb-1">💳 MAC Address (KTP/Nomor Seri Fisik Perangkat):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
-                                MAC (Media Access Control) adalah <strong>nomor sertifikat/KTP fisik</strong> yang
-                                diukir permanen oleh pabrik pada chip WiFi atau kartu LAN perangkat Anda. Sifatnya unik
-                                secara global di dunia.
+                                MAC (Media Access Control) adalah <strong>nomor sertifikat/KTP fisik</strong> yang diukir permanen oleh pabrik pada chip WiFi atau kartu LAN perangkat Anda. Sifatnya unik secara global di dunia.
                             </p>
-                            <ul
-                                class="text-xs text-slate-700 dark:text-on-secondary-container mt-2 space-y-1 list-disc list-inside">
+                            <ul class="text-xs text-slate-700 dark:text-on-secondary-container mt-2 space-y-1 list-disc list-inside">
                                 <li>Bekerja di <strong>Layer 2 (Data Link OSI)</strong>.</li>
-                                <li>Format 48-bit (6 pasang kode Hexadecimal, misal: <code>94-18-82-08-1D-5B</code>).
-                                </li>
-                                <li>3 pasang pertama = Kode Pabrik Vendor (OUI), 3 pasang akhir = Seri Unik Perangkat.
-                                </li>
+                                <li>Format 48-bit (6 pasang kode Hexadecimal, misal: <code>94-18-82-08-1D-5B</code>).</li>
+                                <li>3 pasang pertama = Kode Pabrik Vendor (OUI), 3 pasang akhir = Seri Unik Perangkat.</li>
                             </ul>
                         </div>
 
-                        <div
-                            class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-blue-600 dark:border-secondary-container rounded-sm">
-                            <strong class="text-blue-700 dark:text-secondary block mb-1">🌐 IPv4 Address (Alamat Surat /
-                                Nomor Kamar):</strong>
+                        <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-blue-600 dark:border-secondary-container rounded-sm">
+                            <strong class="text-blue-700 dark:text-secondary block mb-1">🌐 IPv4 Address (Alamat Surat / Nomor Kamar):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
-                                IPv4 adalah <strong>alamat jaringan sementara</strong> yang diberikan agar perangkat
-                                Anda bisa berkirim data lewat internet. Alamat ini bisa berubah jika Anda pindah lokasi
-                                WiFi.
+                                IPv4 adalah <strong>alamat jaringan sementara</strong> yang diberikan agar perangkat Anda bisa berkirim data lewat internet. Alamat ini bisa berubah jika Anda pindah lokasi WiFi.
                             </p>
-                            <ul
-                                class="text-xs text-slate-700 dark:text-on-secondary-container mt-2 space-y-1 list-disc list-inside">
+                            <ul class="text-xs text-slate-700 dark:text-on-secondary-container mt-2 space-y-1 list-disc list-inside">
                                 <li>Bekerja di <strong>Layer 3 (Network OSI)</strong>.</li>
                                 <li>Berukuran 32-bit (sekitar 4,3 miliar kombinasi unik).</li>
                                 <li>Format Desimal 4 bagian: <code>192.168.1.1</code>.</li>
@@ -443,139 +335,98 @@
                 </div>
 
                 <!-- Card 2: IP Private vs IP Public -->
-                <div
-                    class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
+                <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
                     <div class="flex items-center gap-3 border-b border-slate-200 dark:border-brand-border pb-3">
                         <span class="material-symbols-outlined text-emerald-600 dark:text-tertiary text-3xl">hub</span>
                         <div>
-                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">IP
-                                Private vs IP Public</h3>
-                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Nomor Kamar Hotel Intern vs
-                                Alamat Gedung Utama</p>
+                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">IP Private vs IP Public</h3>
+                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Nomor Kamar Hotel Intern vs Alamat Gedung Utama</p>
                         </div>
                     </div>
                     <div class="flex flex-col gap-3 text-sm leading-relaxed text-slate-800 dark:text-on-surface">
-                        <div
-                            class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-emerald-600 dark:border-tertiary rounded-sm">
-                            <strong class="text-emerald-700 dark:text-tertiary block mb-1">🏡 IP Private (Jaringan
-                                Internal Rumah/Kantor):</strong>
+                        <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-emerald-600 dark:border-tertiary rounded-sm">
+                            <strong class="text-emerald-700 dark:text-tertiary block mb-1">🏡 IP Private (Jaringan Internal Rumah/Kantor):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
-                                Alamat internal gratis yang dipakai khusus di dalam jaringan lokal WiFi rumah Anda.
-                                Orang luar dari internet tidak bisa mengakses IP ini secara langsung demi keamanan.
+                                Alamat internal gratis yang dipakai khusus di dalam jaringan lokal WiFi rumah Anda. Orang luar dari internet tidak bisa mengakses IP ini secara langsung demi keamanan.
                             </p>
-                            <div
-                                class="text-[11px] font-code-md text-slate-700 dark:text-on-secondary-container mt-2 bg-slate-200 dark:bg-background p-2 rounded">
-                                Rentang IP Private Resmi:<br />
-                                • Kelas A: 10.0.0.0 s/d 10.255.255.255<br />
-                                • Kelas B: 172.16.0.0 s/d 172.31.255.255<br />
+                            <div class="text-[11px] font-code-md text-slate-700 dark:text-on-secondary-container mt-2 bg-slate-200 dark:bg-background p-2 rounded">
+                                Rentang IP Private Resmi:<br/>
+                                • Kelas A: 10.0.0.0 s/d 10.255.255.255<br/>
+                                • Kelas B: 172.16.0.0 s/d 172.31.255.255<br/>
                                 • Kelas C: 192.168.0.0 s/d 192.168.255.255
                             </div>
                         </div>
 
-                        <div
-                            class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-purple-600 dark:border-primary-container rounded-sm">
-                            <strong class="text-purple-700 dark:text-primary block mb-1">🌍 IP Public (Alamat Resmi
-                                Internet Dunia):</strong>
+                        <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-purple-600 dark:border-primary-container rounded-sm">
+                            <strong class="text-purple-700 dark:text-primary block mb-1">🌍 IP Public (Alamat Resmi Internet Dunia):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
-                                Alamat unik global yang diberikan oleh Provider Internet (Indihome/Biznet/Telkomsel).
-                                Ini adalah alamat yang tampak oleh Google atau YouTube saat Anda berselancar di
-                                internet.
+                                Alamat unik global yang diberikan oleh Provider Internet (Indihome/Biznet/Telkomsel). Ini adalah alamat yang tampak oleh Google atau YouTube saat Anda berselancar di internet.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 3: Static IP vs Dynamic IP -->
-                <div
-                    class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
+                <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
                     <div class="flex items-center gap-3 border-b border-slate-200 dark:border-brand-border pb-3">
-                        <span
-                            class="material-symbols-outlined text-blue-600 dark:text-secondary text-3xl">sync_alt</span>
+                        <span class="material-symbols-outlined text-blue-600 dark:text-secondary text-3xl">sync_alt</span>
                         <div>
-                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">IP Statik
-                                vs IP Dinamik (DHCP)</h3>
-                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Nomor Rumah Tetap vs Nomor
-                                Antrian Otomatis</p>
+                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">IP Statik vs IP Dinamik (DHCP)</h3>
+                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Nomor Rumah Tetap vs Nomor Antrian Otomatis</p>
                         </div>
                     </div>
                     <div class="flex flex-col gap-3 text-sm text-slate-800 dark:text-on-surface">
-                        <div
-                            class="bg-slate-50 dark:bg-brand-surface-inset p-3 rounded-sm border border-slate-200 dark:border-brand-border">
-                            <strong class="text-slate-900 dark:text-on-surface block mb-1">🔄 IP Dinamik (DHCP
-                                Server):</strong>
+                        <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 rounded-sm border border-slate-200 dark:border-brand-border">
+                            <strong class="text-slate-900 dark:text-on-surface block mb-1">🔄 IP Dinamik (DHCP Server):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
-                                IP yang dipinjamkan secara otomatis oleh Router saat Anda menyalakan WiFi. Mirip seperti
-                                <strong>nomor antrian minimarket</strong> — alamat IP ini bisa berganti-ganti tiap kali
-                                Anda terhubung ulang.
+                                IP yang dipinjamkan secara otomatis oleh Router saat Anda menyalakan WiFi. Mirip seperti <strong>nomor antrian minimarket</strong> — alamat IP ini bisa berganti-ganti tiap kali Anda terhubung ulang.
                             </p>
                         </div>
-                        <div
-                            class="bg-slate-50 dark:bg-brand-surface-inset p-3 rounded-sm border border-slate-200 dark:border-brand-border">
-                            <strong class="text-slate-900 dark:text-on-surface block mb-1">📌 IP Statik (Diatur
-                                Manual):</strong>
+                        <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 rounded-sm border border-slate-200 dark:border-brand-border">
+                            <strong class="text-slate-900 dark:text-on-surface block mb-1">📌 IP Statik (Diatur Manual):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
-                                IP yang dikunci dan diketik secara manual pada perangkat. Biasanya dipakai pada
-                                <strong>Server Website, Printer Kantor, atau Kamera CCTV</strong> agar lokasinya tetap
-                                dan tidak membuat bingung perangkat lain.
+                                IP yang dikunci dan diketik secara manual pada perangkat. Biasanya dipakai pada <strong>Server Website, Printer Kantor, atau Kamera CCTV</strong> agar lokasinya tetap dan tidak membuat bingung perangkat lain.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 4: Kelas-Kelas IP (Classful IPv4) -->
-                <div
-                    class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
+                <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
                     <div class="flex items-center gap-3 border-b border-slate-200 dark:border-brand-border pb-3">
-                        <span
-                            class="material-symbols-outlined text-purple-600 dark:text-primary text-3xl">grid_view</span>
+                        <span class="material-symbols-outlined text-purple-600 dark:text-primary text-3xl">grid_view</span>
                         <div>
-                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">
-                                Kelas-Kelas IP (Classful IPv4)</h3>
-                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Pembagian Jaringan
-                                Berdasarkan Skala Perusahaan</p>
+                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">Kelas-Kelas IP (Classful IPv4)</h3>
+                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Pembagian Jaringan Berdasarkan Skala Perusahaan</p>
                         </div>
                     </div>
                     <div class="flex flex-col gap-2 text-xs">
                         <div class="bg-amber-50 dark:bg-brand-surface-inset p-2.5 rounded border-l-4 border-amber-500">
-                            <div class="font-bold text-amber-700 dark:text-amber-400">Kelas A (1.0.0.0 s/d
-                                127.255.255.255 /8)</div>
-                            <div class="text-slate-600 dark:text-on-surface-variant">Untuk Perusahaan Raksasa
-                                Multinasional. Kapasitas hingga 16.777.214 host per subnet.</div>
+                            <div class="font-bold text-amber-700 dark:text-amber-400">Kelas A (1.0.0.0 s/d 127.255.255.255 /8)</div>
+                            <div class="text-slate-600 dark:text-on-surface-variant">Untuk Perusahaan Raksasa Multinasional. Kapasitas hingga 16.777.214 host per subnet.</div>
                         </div>
                         <div class="bg-blue-50 dark:bg-brand-surface-inset p-2.5 rounded border-l-4 border-blue-500">
-                            <div class="font-bold text-blue-700 dark:text-blue-400">Kelas B (128.0.0.0 s/d
-                                191.255.255.255 /16)</div>
-                            <div class="text-slate-600 dark:text-on-surface-variant">Untuk Kantor Menengah - Besar /
-                                Kampus. Kapasitas hingga 65.534 host.</div>
+                            <div class="font-bold text-blue-700 dark:text-blue-400">Kelas B (128.0.0.0 s/d 191.255.255.255 /16)</div>
+                            <div class="text-slate-600 dark:text-on-surface-variant">Untuk Kantor Menengah - Besar / Kampus. Kapasitas hingga 65.534 host.</div>
                         </div>
-                        <div
-                            class="bg-emerald-50 dark:bg-brand-surface-inset p-2.5 rounded border-l-4 border-emerald-500">
-                            <div class="font-bold text-emerald-700 dark:text-emerald-400">Kelas C (192.0.0.0 s/d
-                                223.255.255.255 /24)</div>
-                            <div class="text-slate-600 dark:text-on-surface-variant">Untuk Rumah &amp; Kantor Kecil.
-                                Kapasitas hingga 254 host usable.</div>
+                        <div class="bg-emerald-50 dark:bg-brand-surface-inset p-2.5 rounded border-l-4 border-emerald-500">
+                            <div class="font-bold text-emerald-700 dark:text-emerald-400">Kelas C (192.0.0.0 s/d 223.255.255.255 /24)</div>
+                            <div class="text-slate-600 dark:text-on-surface-variant">Untuk Rumah &amp; Kantor Kecil. Kapasitas hingga 254 host usable.</div>
                         </div>
-                        <div
-                            class="bg-purple-50 dark:bg-brand-surface-inset p-2.5 rounded border-l-4 border-purple-500">
-                            <div class="font-bold text-purple-700 dark:text-purple-400">Kelas D &amp; E (224.0.0.0 s/d
-                                255.255.255.255)</div>
-                            <div class="text-slate-600 dark:text-on-surface-variant">Kelas D untuk Multicast (Video
-                                Stream) &amp; Kelas E untuk Riset/Eksperimen.</div>
+                        <div class="bg-purple-50 dark:bg-brand-surface-inset p-2.5 rounded border-l-4 border-purple-500">
+                            <div class="font-bold text-purple-700 dark:text-purple-400">Kelas D &amp; E (224.0.0.0 s/d 255.255.255.255)</div>
+                            <div class="text-slate-600 dark:text-on-surface-variant">Kelas D untuk Multicast (Video Stream) &amp; Kelas E untuk Riset/Eksperimen.</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 5: Struktur Biner & NetID vs HostID -->
-                <div
-                    class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
+                <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
                     <div class="flex items-center gap-3 border-b border-slate-200 dark:border-brand-border pb-3">
-                        <span
-                            class="material-symbols-outlined text-amber-600 dark:text-amber-400 text-3xl">account_tree</span>
+                        <span class="material-symbols-outlined text-amber-600 dark:text-amber-400 text-3xl">account_tree</span>
                         <div>
-                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">NetID vs
-                                HostID (Struktur Biner)</h3>
-                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Identitas Kelompok Jaringan
-                                vs Identitas Perangkat</p>
+                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">NetID vs HostID (Struktur Biner)</h3>
+                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Identitas Kelompok Jaringan vs Identitas Perangkat</p>
                         </div>
                     </div>
                     <div class="flex flex-col gap-3 text-xs leading-relaxed text-slate-800 dark:text-on-surface">
@@ -583,60 +434,41 @@
                             Setiap alamat IPv4 (32 bit biner) terbagi menjadi dua porsi utama:
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            <div
-                                class="bg-purple-50 dark:bg-brand-surface-inset p-2.5 rounded border-l-4 border-purple-600">
-                                <strong class="text-purple-700 dark:text-primary block mb-1">Network ID
-                                    (NetID):</strong>
-                                <span class="text-slate-600 dark:text-on-surface-variant">Menunjukkan nama
-                                    kelompok/jalan tempat jaringan berada. Bit biner bernilai `1` pada subnet
-                                    mask.</span>
+                            <div class="bg-purple-50 dark:bg-brand-surface-inset p-2.5 rounded border-l-4 border-purple-600">
+                                <strong class="text-purple-700 dark:text-primary block mb-1">Network ID (NetID):</strong>
+                                <span class="text-slate-600 dark:text-on-surface-variant">Menunjukkan nama kelompok/jalan tempat jaringan berada. Bit biner bernilai `1` pada subnet mask.</span>
                             </div>
-                            <div
-                                class="bg-blue-50 dark:bg-brand-surface-inset p-2.5 rounded border-l-4 border-blue-600">
+                            <div class="bg-blue-50 dark:bg-brand-surface-inset p-2.5 rounded border-l-4 border-blue-600">
                                 <strong class="text-blue-700 dark:text-secondary block mb-1">Host ID (HostID):</strong>
-                                <span class="text-slate-600 dark:text-on-surface-variant">Menunjukkan nomor unik
-                                    perangkat di dalam kelompok tersebut. Bit biner bernilai `0` pada subnet
-                                    mask.</span>
+                                <span class="text-slate-600 dark:text-on-surface-variant">Menunjukkan nomor unik perangkat di dalam kelompok tersebut. Bit biner bernilai `0` pada subnet mask.</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 6: Mengapa Ada Pengurangan -2 Host Usable? -->
-                <div
-                    class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
+                <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-4 shadow-md transition-colors">
                     <div class="flex items-center gap-3 border-b border-slate-200 dark:border-brand-border pb-3">
-                        <span
-                            class="material-symbols-outlined text-rose-600 dark:text-red-400 text-3xl">do_not_disturb_on</span>
+                        <span class="material-symbols-outlined text-rose-600 dark:text-red-400 text-3xl">do_not_disturb_on</span>
                         <div>
-                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">Mengapa
-                                Formula Usable Host = 2<sup>(32-n)</sup> - 2?</h3>
-                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Dua Alamat Spesial yang
-                                Dipesan Sistem Jaringan</p>
+                            <h3 class="font-headline-md text-lg font-bold text-slate-900 dark:text-on-surface">Mengapa Formula Usable Host = 2<sup>(32-n)</sup> - 2?</h3>
+                            <p class="text-xs text-slate-500 dark:text-on-surface-variant">Dua Alamat Spesial yang Dipesan Sistem Jaringan</p>
                         </div>
                     </div>
                     <div class="flex flex-col gap-3 text-xs leading-relaxed text-slate-800 dark:text-on-surface">
                         <p class="text-slate-600 dark:text-on-surface-variant">
-                            Dari total kombinasi alamat IP dalam satu subnet, <strong>2 IP selalu dipesan
-                                khusus</strong> dan tidak boleh dikonfigurasi pada komputer/HP user:
+                            Dari total kombinasi alamat IP dalam satu subnet, <strong>2 IP selalu dipesan khusus</strong> dan tidak boleh dikonfigurasi pada komputer/HP user:
                         </p>
                         <ul class="space-y-2">
-                            <li
-                                class="bg-slate-50 dark:bg-brand-surface-inset p-2 rounded border border-slate-200 dark:border-brand-border">
-                                <strong class="text-slate-900 dark:text-slate-100">1. Alamat Network (IP
-                                    Pertama):</strong> Digunakan router sebagai nomor ID kelompok jaringan.
+                            <li class="bg-slate-50 dark:bg-brand-surface-inset p-2 rounded border border-slate-200 dark:border-brand-border">
+                                <strong class="text-slate-900 dark:text-slate-100">1. Alamat Network (IP Pertama):</strong> Digunakan router sebagai nomor ID kelompok jaringan.
                             </li>
-                            <li
-                                class="bg-slate-50 dark:bg-brand-surface-inset p-2 rounded border border-slate-200 dark:border-brand-border">
-                                <strong class="text-slate-900 dark:text-slate-100">2. Alamat Broadcast (IP
-                                    Terakhir):</strong> Digunakan untuk menyiarkan pesan ke seluruh perangkat di subnet
-                                sekaligus.
+                            <li class="bg-slate-50 dark:bg-brand-surface-inset p-2 rounded border border-slate-200 dark:border-brand-border">
+                                <strong class="text-slate-900 dark:text-slate-100">2. Alamat Broadcast (IP Terakhir):</strong> Digunakan untuk menyiarkan pesan ke seluruh perangkat di subnet sekaligus.
                             </li>
                         </ul>
-                        <div
-                            class="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-brand-surface-inset p-2 rounded border border-emerald-300 dark:border-emerald-700">
-                            Rentang IP Usable yang aman dipakai = First Host (Network + 1) s/d Last Host (Broadcast -
-                            1).
+                        <div class="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-brand-surface-inset p-2 rounded border border-emerald-300 dark:border-emerald-700">
+                            Rentang IP Usable yang aman dipakai = First Host (Network + 1) s/d Last Host (Broadcast - 1).
                         </div>
                     </div>
                 </div>
@@ -646,44 +478,32 @@
             <!-- Mengapa Subnetting CIDR Sangat Penting & Wildcard Mask -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Wildcard Mask & IP Khusus (127.0.0.1) -->
-                <section
-                    class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-3 shadow-md transition-colors">
-                    <h3
-                        class="font-headline-md text-lg font-bold text-sky-700 dark:text-sky-300 flex items-center gap-2">
+                <section class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-3 shadow-md transition-colors">
+                    <h3 class="font-headline-md text-lg font-bold text-sky-700 dark:text-sky-300 flex items-center gap-2">
                         <span class="material-symbols-outlined">shield</span>
                         Wildcard Mask &amp; IP Khusus (Localhost 127.0.0.1)
                     </h3>
-                    <div
-                        class="flex flex-col gap-2 text-xs md:text-sm text-slate-700 dark:text-on-surface-variant leading-relaxed">
+                    <div class="flex flex-col gap-2 text-xs md:text-sm text-slate-700 dark:text-on-surface-variant leading-relaxed">
                         <p>
-                            <strong>Wildcard Mask:</strong> Merupakan kebalikan biner (*inversi*) dari Subnet Mask
-                            (misal mask <code>255.255.255.0</code> memiliki wildcard <code>0.0.0.255</code>). Digunakan
-                            dalam pembuatan aturan Firewall, Router Cisco, dan Mikrotik Access List (ACL).
+                            <strong>Wildcard Mask:</strong> Merupakan kebalikan biner (*inversi*) dari Subnet Mask (misal mask <code>255.255.255.0</code> memiliki wildcard <code>0.0.0.255</code>). Digunakan dalam pembuatan aturan Firewall, Router Cisco, dan Mikrotik Access List (ACL).
                         </p>
                         <p>
-                            <strong>IP Localhost (127.0.0.1):</strong> Alamat IP khusus *Loopback* yang merujuk pada
-                            perangkat itu sendiri, biasanya dipakai pengembang untuk menguji aplikasi web lokal.
+                            <strong>IP Localhost (127.0.0.1):</strong> Alamat IP khusus *Loopback* yang merujuk pada perangkat itu sendiri, biasanya dipakai pengembang untuk menguji aplikasi web lokal.
                         </p>
                     </div>
                 </section>
 
                 <!-- Mengapa Metode CIDR Sangat Penting -->
-                <section
-                    class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-3 shadow-md transition-colors">
-                    <h3
-                        class="font-headline-md text-lg font-bold text-purple-700 dark:text-primary flex items-center gap-2">
+                <section class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-3 shadow-md transition-colors">
+                    <h3 class="font-headline-md text-lg font-bold text-purple-700 dark:text-primary flex items-center gap-2">
                         <span class="material-symbols-outlined">lightbulb</span>
                         Mengapa Metode CIDR (Subnetting) Sangat Penting?
                     </h3>
                     <p class="text-xs md:text-sm text-slate-700 dark:text-on-surface-variant leading-relaxed">
-                        Dahulu, sistem pengalamatan IP terbagi kaku menjadi Kelas A, B, dan C. Namun jika sebuah kantor
-                        membutuhkan 300 komputer, mereka terpaksa harus menyewa 1 blok Kelas B (65.534 IP), sehingga
-                        membuang lebih dari 65.000 IP secara cuma-cuma!
+                        Dahulu, sistem pengalamatan IP terbagi kaku menjadi Kelas A, B, dan C. Namun jika sebuah kantor membutuhkan 300 komputer, mereka terpaksa harus menyewa 1 blok Kelas B (65.534 IP), sehingga membuang lebih dari 65.000 IP secara cuma-cuma!
                     </p>
                     <p class="text-xs md:text-sm text-slate-700 dark:text-on-surface-variant leading-relaxed">
-                        Dengan metode <strong>CIDR (Classless Inter-Domain Routing)</strong> atau Notasi Prefix (seperti
-                        <code>/23</code> atau <code>/24</code>), jaringan dapat dipotong secara fleksibel dan presisi
-                        sesuai jumlah komputer yang dibutuhkan tanpa ada alamat IP yang terbuang sia-sia.
+                        Dengan metode <strong>CIDR (Classless Inter-Domain Routing)</strong> atau Notasi Prefix (seperti <code>/23</code> atau <code>/24</code>), jaringan dapat dipotong secara fleksibel dan presisi sesuai jumlah komputer yang dibutuhkan tanpa ada alamat IP yang terbuang sia-sia.
                     </p>
                 </section>
             </div>
@@ -693,20 +513,15 @@
     </main>
 
     <!-- Footer FIXED DARK BACKGROUND: bg-white dark:bg-[#0d131f] (Widescreen max-w-[1440px]) -->
-    <footer
-        class="bg-white dark:bg-[#0d131f] border-t border-slate-200 dark:border-brand-border mt-auto transition-colors">
-        <div
-            class="w-full py-6 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-4 max-w-[1440px] mx-auto text-xs">
+    <footer class="bg-white dark:bg-[#0d131f] border-t border-slate-200 dark:border-brand-border mt-auto transition-colors">
+        <div class="w-full py-6 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-4 max-w-[1440px] mx-auto text-xs">
             <div class="font-label-sm font-bold text-slate-500 dark:text-outline">
                 © 2026 IP Calculator Indonesia. Dibuat oleh Mas Reza .
             </div>
             <nav class="flex gap-4">
-                <a class="nav-link text-slate-600 dark:text-outline hover:text-slate-900 dark:hover:text-on-surface transition-colors"
-                    data-tab="kalkulator" href="#">Kalkulator</a>
-                <a class="nav-link text-slate-600 dark:text-outline hover:text-slate-900 dark:hover:text-on-surface transition-colors"
-                    data-tab="tabel" href="#">Tabel CIDR</a>
-                <a class="nav-link text-slate-600 dark:text-outline hover:text-slate-900 dark:hover:text-on-surface transition-colors"
-                    data-tab="edukasi" href="#">Materi Singkat</a>
+                <a class="nav-link text-slate-600 dark:text-outline hover:text-slate-900 dark:hover:text-on-surface transition-colors" data-tab="kalkulator" href="#">Kalkulator</a>
+                <a class="nav-link text-slate-600 dark:text-outline hover:text-slate-900 dark:hover:text-on-surface transition-colors" data-tab="tabel" href="#">Tabel CIDR</a>
+                <a class="nav-link text-slate-600 dark:text-outline hover:text-slate-900 dark:hover:text-on-surface transition-colors" data-tab="edukasi" href="#">Materi Singkat</a>
             </nav>
         </div>
     </footer>
@@ -714,5 +529,4 @@
     <!-- Logic Script -->
     <script src="script.js"></script>
 </body>
-
 </html>
