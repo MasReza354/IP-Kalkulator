@@ -6,9 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DOM ELEMENT REFERENCES ---
 
     // Theme Toggle Elements
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeToggleIcon = document.getElementById('themeToggleIcon');
-    const themeToggleText = document.getElementById('themeToggleText');
+    const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+
+    // Mode Belajar Elements
+    const modeAwamBtns = document.querySelectorAll('.mode-awam-btn');
+    let isAwamActive = true; // Default active
 
     // Nav Links
     const navLinks = document.querySelectorAll('.nav-link');
@@ -20,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcBtn = document.getElementById('calcBtn');
     const resetBtn = document.getElementById('resetBtn');
     const ipErrorMsg = document.getElementById('ipErrorMsg');
-    const modeAwamToggle = document.getElementById('modeAwamToggle');
     const copyBtn = document.getElementById('copyBtn');
     const copyBtnIcon = document.getElementById('copyBtnIcon');
     const copyBtnText = document.getElementById('copyBtnText');
@@ -46,30 +47,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
 
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
+    themeToggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
             const isDark = document.documentElement.classList.contains('dark');
             setTheme(isDark ? 'light' : 'dark');
         });
-    }
+    });
 
     function setTheme(theme) {
         if (theme === 'dark') {
             document.documentElement.classList.add('dark');
             document.documentElement.classList.remove('light');
-            if (themeToggleIcon) {
-                themeToggleIcon.textContent = 'dark_mode';
-                themeToggleIcon.className = 'material-symbols-outlined text-sm text-amber-400';
-            }
-            if (themeToggleText) themeToggleText.textContent = 'Dark Mode';
+            document.querySelectorAll('.theme-toggle-icon').forEach(icon => {
+                icon.textContent = 'dark_mode';
+                icon.className = 'theme-toggle-icon material-symbols-outlined text-sm text-amber-400';
+            });
+            document.querySelectorAll('.theme-toggle-text').forEach(text => {
+                text.textContent = 'Dark Mode';
+            });
         } else {
             document.documentElement.classList.remove('dark');
             document.documentElement.classList.add('light');
-            if (themeToggleIcon) {
-                themeToggleIcon.textContent = 'light_mode';
-                themeToggleIcon.className = 'material-symbols-outlined text-sm text-amber-500';
-            }
-            if (themeToggleText) themeToggleText.textContent = 'Light Mode';
+            document.querySelectorAll('.theme-toggle-icon').forEach(icon => {
+                icon.textContent = 'light_mode';
+                icon.className = 'theme-toggle-icon material-symbols-outlined text-sm text-amber-500';
+            });
+            document.querySelectorAll('.theme-toggle-text').forEach(text => {
+                text.textContent = 'Light Mode';
+            });
         }
         localStorage.setItem('theme', theme);
     }
@@ -82,10 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Build CIDR Reference Table (/1 to /32)
     buildCidrTable();
 
-    // 3. Initial Toggle Setup for Mode Belajar/Awam
-    if (modeAwamToggle) {
-        updateAwamMode(modeAwamToggle.checked);
-    }
+    // 3. Initial Setup for Mode Belajar/Awam
+    updateAwamMode(isAwamActive);
 
     // 4. Initial State: Kosongkan data, isi angka 0 sebelum dihitung
     resetToZeroState();
@@ -133,12 +136,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Mode Awam Toggle Switch
-    if (modeAwamToggle) {
-        modeAwamToggle.addEventListener('change', (e) => {
-            updateAwamMode(e.target.checked);
+    // Mode Awam Button Click Event
+    modeAwamBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            isAwamActive = !isAwamActive;
+            updateAwamMode(isAwamActive);
         });
-    }
+    });
 
     // Input Change -> Clear Error State
     ipInput.addEventListener('input', () => {
@@ -470,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Toggle "Mode Awam" explanations display
+     * Toggle "Mode Awam" explanations display & button indicator states
      */
     function updateAwamMode(isAwam) {
         document.querySelectorAll('.awam-explanation').forEach(el => {
@@ -480,6 +484,22 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 el.classList.add('hidden');
                 el.style.display = 'none';
+            }
+        });
+
+        document.querySelectorAll('.mode-awam-dot').forEach(dot => {
+            if (isAwam) {
+                dot.className = 'mode-awam-dot w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-xs';
+            } else {
+                dot.className = 'mode-awam-dot w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-600';
+            }
+        });
+
+        document.querySelectorAll('.mode-awam-btn').forEach(btn => {
+            if (isAwam) {
+                btn.classList.add('border-purple-300', 'dark:border-primary/50');
+            } else {
+                btn.classList.remove('border-purple-300', 'dark:border-primary/50');
             }
         });
     }
