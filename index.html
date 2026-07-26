@@ -285,6 +285,239 @@
                     </tbody>
                 </table>
             </section>
+
+            <!-- SECTION 1: DAFTAR ALAMAT IP PRIVATE DAN IP PUBLIC (KELAS A, B, C) -->
+            <section class="flex flex-col gap-4 mt-4">
+                <div class="flex items-center gap-3 border-b border-slate-300 dark:border-brand-border pb-3">
+                    <span class="material-symbols-outlined text-purple-600 dark:text-primary text-2xl">dns</span>
+                    <div>
+                        <h2 class="font-headline-md text-xl font-bold text-slate-900 dark:text-on-surface">Daftar Alamat IP Private &amp; IP Public (Kelas A, B, C)</h2>
+                        <p class="text-xs text-slate-600 dark:text-on-surface-variant">Pembagian alokasi alamat IP Private resmi (RFC 1918) dan IP Public berdasarkan Kelas Jaringan IPv4</p>
+                    </div>
+                </div>
+
+                <!-- Highlight Explainer Cards for Beginners (Analogi Mudah Dipahami) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Card Highlight: IP Private -->
+                    <div class="bg-emerald-50/70 dark:bg-brand-surface-inset border-2 border-emerald-500/60 p-4 rounded-sm flex flex-col gap-2 shadow-sm transition-colors relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 opacity-10 dark:opacity-20 text-emerald-600 pointer-events-none">
+                            <span class="material-symbols-outlined text-8xl">home_pin</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-600 text-white flex items-center gap-1 shadow-sm">
+                                <span class="material-symbols-outlined text-sm">home_pin</span> IP PRIVATE
+                            </span>
+                            <span class="text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-200/60 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-400/40">Jaringan Internal / Lokal</span>
+                        </div>
+                        <p class="text-xs font-bold text-slate-800 dark:text-on-surface mt-1 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm text-amber-500">lightbulb</span> Analogi: <span class="text-emerald-700 dark:text-emerald-400 font-normal">Mirip "Nomor Kamar Kos" atau "Nomor Ekstensi Telepon Kantor".</span>
+                        </p>
+                        <p class="text-xs text-slate-600 dark:text-on-surface-variant leading-relaxed">
+                            Alamat IP internal yang <strong>GRATIS</strong> dan bebas dipakai di rumah/kantor Anda. HP/Laptop Anda menggunakan IP ini untuk saling terkoneksi ke Router WiFi. Orang luar dari Internet <strong>TIDAK BISA</strong> langsung melacak/mengakses IP ini secara langsung demi keamanan.
+                        </p>
+                    </div>
+
+                    <!-- Card Highlight: IP Public -->
+                    <div class="bg-purple-50/70 dark:bg-brand-surface-inset border-2 border-purple-500/60 p-4 rounded-sm flex flex-col gap-2 shadow-sm transition-colors relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 opacity-10 dark:opacity-20 text-purple-600 pointer-events-none">
+                            <span class="material-symbols-outlined text-8xl">public</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-purple-600 text-white flex items-center gap-1 shadow-sm">
+                                <span class="material-symbols-outlined text-sm">public</span> IP PUBLIC
+                            </span>
+                            <span class="text-xs font-semibold text-purple-800 dark:text-purple-300 bg-purple-200/60 dark:bg-purple-950/60 px-2 py-0.5 rounded border border-purple-400/40">Alamat Resmi Internet Dunia</span>
+                        </div>
+                        <p class="text-xs font-bold text-slate-800 dark:text-on-surface mt-1 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm text-amber-500">lightbulb</span> Analogi: <span class="text-purple-700 dark:text-primary font-normal">Mirip "Alamat Rumah Resmi" yang terdaftar di Kantor Pos.</span>
+                        </p>
+                        <p class="text-xs text-slate-600 dark:text-on-surface-variant leading-relaxed">
+                            Alamat IP global yang <strong>UNIK di seluruh dunia</strong>, diberikan langsung oleh Provider Internet (Indihome/Biznet/Telkomsel). Google, YouTube, atau Website server menggunakan IP Public agar dapat diakses dari mana saja.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Table IP Private & Public with Highlighted Columns -->
+                <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border rounded-sm overflow-x-auto shadow-md transition-colors mt-2">
+                    <table class="w-full text-left border-collapse min-w-[800px]">
+                        <thead>
+                            <tr class="bg-slate-100 dark:bg-brand-surface-inset border-b border-slate-300 dark:border-brand-border text-slate-700 dark:text-on-surface-variant uppercase text-[11px] font-bold font-label-sm tracking-wider">
+                                <th class="px-4 py-3">Kelas IP</th>
+                                <th class="px-4 py-3">Subnet Default</th>
+                                <th class="px-4 py-3 bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border-x border-emerald-500/20">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined text-sm text-emerald-600">lock</span>
+                                        <span>Rentang IP Private (RFC 1918)</span>
+                                    </div>
+                                </th>
+                                <th class="px-4 py-3 bg-purple-500/10 text-purple-800 dark:text-purple-300 border-r border-purple-500/20">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined text-sm text-purple-600">public</span>
+                                        <span>Rentang IP Public</span>
+                                    </div>
+                                </th>
+                                <th class="px-4 py-3">Peruntukan Utama</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 dark:divide-brand-border text-xs text-slate-800 dark:text-on-surface">
+                            <tr class="hover:bg-slate-50 dark:hover:bg-brand-surface-inset transition-colors">
+                                <td class="px-4 py-3 font-bold text-amber-700 dark:text-amber-400">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30">
+                                        <span class="material-symbols-outlined text-xs">domain</span> Kelas A
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3 font-mono font-bold">/8 <span class="text-[11px] text-slate-500 dark:text-on-surface-variant font-normal block">(255.0.0.0)</span></td>
+                                <td class="px-4 py-3 font-mono font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/20 border-x border-emerald-500/10">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-600 text-white">IP Private</span>
+                                        <span class="text-[10px] text-slate-500 dark:text-on-surface-variant font-normal">Prefix /8</span>
+                                    </div>
+                                    10.0.0.0 s/d 10.255.255.255
+                                    <span class="block text-[10px] text-emerald-600/80 dark:text-emerald-400/80 font-normal mt-0.5">Total: ~16,7 Juta IP Internal</span>
+                                </td>
+                                <td class="px-4 py-3 font-mono text-purple-700 dark:text-purple-300 bg-purple-50/50 dark:bg-purple-950/20 border-r border-purple-500/10">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-purple-600 text-white">IP Public</span>
+                                    </div>
+                                    1.0.0.0 s/d 9.255.255.255<br/>
+                                    11.0.0.0 s/d 126.255.255.255
+                                </td>
+                                <td class="px-4 py-3 text-slate-600 dark:text-on-surface-variant leading-relaxed">Jaringan Skala Sangat Besar (Enterprise Raksasa, ISP, Instansi Pemerintah)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-brand-surface-inset transition-colors">
+                                <td class="px-4 py-3 font-bold text-blue-700 dark:text-blue-400">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/30">
+                                        <span class="material-symbols-outlined text-xs">apartment</span> Kelas B
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3 font-mono font-bold">/16 <span class="text-[11px] text-slate-500 dark:text-on-surface-variant font-normal block">(255.255.0.0)</span></td>
+                                <td class="px-4 py-3 font-mono font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/20 border-x border-emerald-500/10">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-600 text-white">IP Private</span>
+                                        <span class="text-[10px] text-slate-500 dark:text-on-surface-variant font-normal">Prefix /12</span>
+                                    </div>
+                                    172.16.0.0 s/d 172.31.255.255
+                                    <span class="block text-[10px] text-emerald-600/80 dark:text-emerald-400/80 font-normal mt-0.5">Total: ~1 Juta IP Internal</span>
+                                </td>
+                                <td class="px-4 py-3 font-mono text-purple-700 dark:text-purple-300 bg-purple-50/50 dark:bg-purple-950/20 border-r border-purple-500/10">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-purple-600 text-white">IP Public</span>
+                                    </div>
+                                    128.0.0.0 s/d 172.15.255.255<br/>
+                                    172.32.0.0 s/d 191.255.255.255
+                                </td>
+                                <td class="px-4 py-3 text-slate-600 dark:text-on-surface-variant leading-relaxed">Jaringan Skala Menengah - Besar (Kampus Universitas, Gedung Perkantoran)</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-brand-surface-inset transition-colors">
+                                <td class="px-4 py-3 font-bold text-emerald-700 dark:text-emerald-400">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/30">
+                                        <span class="material-symbols-outlined text-xs">home</span> Kelas C
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3 font-mono font-bold">/24 <span class="text-[11px] text-slate-500 dark:text-on-surface-variant font-normal block">(255.255.255.0)</span></td>
+                                <td class="px-4 py-3 font-mono font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/20 border-x border-emerald-500/10">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-600 text-white">IP Private</span>
+                                        <span class="text-[10px] text-slate-500 dark:text-on-surface-variant font-normal">Prefix /16</span>
+                                    </div>
+                                    192.168.0.0 s/d 192.168.255.255
+                                    <span class="block text-[10px] text-emerald-600/80 dark:text-emerald-400/80 font-normal mt-0.5">Total: ~65 Ribu IP Internal</span>
+                                </td>
+                                <td class="px-4 py-3 font-mono text-purple-700 dark:text-purple-300 bg-purple-50/50 dark:bg-purple-950/20 border-r border-purple-500/10">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-purple-600 text-white">IP Public</span>
+                                    </div>
+                                    192.0.0.0 s/d 192.167.255.255<br/>
+                                    192.169.0.0 s/d 223.255.255.255
+                                </td>
+                                <td class="px-4 py-3 text-slate-600 dark:text-on-surface-variant leading-relaxed">Jaringan Skala Kecil (Rumah, WiFi Cafe, SOHO, Lab Komputer)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 2: ALAMAT IP KHUSUS TAMBAHAN (BUKAN PUBLIC / PRIVATE BIASA) -->
+            <section class="flex flex-col gap-4 mt-4">
+                <div class="flex items-center gap-3 border-b border-slate-300 dark:border-brand-border pb-3">
+                    <span class="material-symbols-outlined text-amber-500 text-2xl">stars</span>
+                    <div>
+                        <h2 class="font-headline-md text-xl font-bold text-slate-900 dark:text-on-surface">Alamat IP Khusus Tambahan (Bukan Public / Private Biasa)</h2>
+                        <p class="text-xs text-slate-600 dark:text-on-surface-variant">Alamat IP IPv4 khusus untuk pengujian internal, otomatisasi (APIPA), multicast data, dan riset</p>
+                    </div>
+                </div>
+
+                <!-- Grid Cards for Special IP Addresses -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Loopback Address -->
+                    <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-4 rounded-sm flex flex-col gap-3 shadow-md transition-colors border-l-4 border-l-cyan-500">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-headline-sm text-sm font-bold text-slate-900 dark:text-on-surface flex items-center gap-2">
+                                <span class="material-symbols-outlined text-cyan-500 text-lg">sync_alt</span>
+                                Loopback Address
+                            </h3>
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border border-cyan-500/30">Localhost</span>
+                        </div>
+                        <div class="font-mono text-xs font-bold text-cyan-800 dark:text-cyan-300 bg-cyan-50 dark:bg-brand-surface-inset p-2.5 rounded border border-cyan-200 dark:border-brand-border flex items-center justify-between">
+                            <span>127.0.0.1 s/d 127.255.255.255</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-on-surface-variant leading-relaxed">
+                            Digunakan perangkat untuk menguji stack TCP/IP internal.
+                        </p>
+                    </div>
+
+                    <!-- APIPA -->
+                    <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-4 rounded-sm flex flex-col gap-3 shadow-md transition-colors border-l-4 border-l-amber-500">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-headline-sm text-sm font-bold text-slate-900 dark:text-on-surface flex items-center gap-2">
+                                <span class="material-symbols-outlined text-amber-500 text-lg">wifi_off</span>
+                                APIPA (Automatic Private IP Addressing)
+                            </h3>
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30">Auto Fallback</span>
+                        </div>
+                        <div class="font-mono text-xs font-bold text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-brand-surface-inset p-2.5 rounded border border-amber-200 dark:border-brand-border flex items-center justify-between">
+                            <span>169.254.0.0 s/d 169.254.255.255</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-on-surface-variant leading-relaxed">
+                            Dialokasikan otomatis oleh OS ketika DHCP Server tidak ditemukan.
+                        </p>
+                    </div>
+
+                    <!-- Class D (Multicast) -->
+                    <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-4 rounded-sm flex flex-col gap-3 shadow-md transition-colors border-l-4 border-l-purple-500">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-headline-sm text-sm font-bold text-slate-900 dark:text-on-surface flex items-center gap-2">
+                                <span class="material-symbols-outlined text-purple-500 text-lg">cast</span>
+                                Class D (Multicast)
+                            </h3>
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-purple-500/10 text-purple-700 dark:text-purple-400 border border-purple-500/30">Multicast</span>
+                        </div>
+                        <div class="font-mono text-xs font-bold text-purple-800 dark:text-purple-300 bg-purple-50 dark:bg-brand-surface-inset p-2.5 rounded border border-purple-200 dark:border-brand-border flex items-center justify-between">
+                            <span>224.0.0.0 s/d 239.255.255.255</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-on-surface-variant leading-relaxed">
+                            Digunakan untuk transmisi multicast data.
+                        </p>
+                    </div>
+
+                    <!-- Class E (Experimental) -->
+                    <div class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-4 rounded-sm flex flex-col gap-3 shadow-md transition-colors border-l-4 border-l-rose-500">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-headline-sm text-sm font-bold text-slate-900 dark:text-on-surface flex items-center gap-2">
+                                <span class="material-symbols-outlined text-rose-500 text-lg">science</span>
+                                Class E (Experimental)
+                            </h3>
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-rose-500/10 text-rose-700 dark:text-rose-400 border border-rose-500/30">Riset / Cadangan</span>
+                        </div>
+                        <div class="font-mono text-xs font-bold text-rose-800 dark:text-rose-300 bg-rose-50 dark:bg-brand-surface-inset p-2.5 rounded border border-rose-200 dark:border-brand-border flex items-center justify-between">
+                            <span>240.0.0.0 s/d 255.255.255.254</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-on-surface-variant leading-relaxed">
+                            Cadangan untuk tujuan eksperimen/penelitian.
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
 
 
@@ -309,7 +542,7 @@
                     </div>
                     <div class="flex flex-col gap-3 text-sm leading-relaxed text-slate-800 dark:text-on-surface">
                         <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-purple-600 dark:border-primary rounded-sm">
-                            <strong class="text-purple-700 dark:text-primary block mb-1">💳 MAC Address (KTP/Nomor Seri Fisik Perangkat):</strong>
+                            <strong class="text-purple-700 dark:text-primary block mb-1 flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">badge</span> MAC Address (KTP/Nomor Seri Fisik Perangkat):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
                                 MAC (Media Access Control) adalah <strong>nomor sertifikat/KTP fisik</strong> yang diukir permanen oleh pabrik pada chip WiFi atau kartu LAN perangkat Anda. Sifatnya unik secara global di dunia.
                             </p>
@@ -321,7 +554,7 @@
                         </div>
 
                         <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-blue-600 dark:border-secondary-container rounded-sm">
-                            <strong class="text-blue-700 dark:text-secondary block mb-1">🌐 IPv4 Address (Alamat Surat / Nomor Kamar):</strong>
+                            <strong class="text-blue-700 dark:text-secondary block mb-1 flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">lan</span> IPv4 Address (Alamat Surat / Nomor Kamar):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
                                 IPv4 adalah <strong>alamat jaringan sementara</strong> yang diberikan agar perangkat Anda bisa berkirim data lewat internet. Alamat ini bisa berubah jika Anda pindah lokasi WiFi.
                             </p>
@@ -345,7 +578,7 @@
                     </div>
                     <div class="flex flex-col gap-3 text-sm leading-relaxed text-slate-800 dark:text-on-surface">
                         <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-emerald-600 dark:border-tertiary rounded-sm">
-                            <strong class="text-emerald-700 dark:text-tertiary block mb-1">🏡 IP Private (Jaringan Internal Rumah/Kantor):</strong>
+                            <strong class="text-emerald-700 dark:text-tertiary block mb-1 flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">home_pin</span> IP Private (Jaringan Internal Rumah/Kantor):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
                                 Alamat internal gratis yang dipakai khusus di dalam jaringan lokal WiFi rumah Anda. Orang luar dari internet tidak bisa mengakses IP ini secara langsung demi keamanan.
                             </p>
@@ -358,7 +591,7 @@
                         </div>
 
                         <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 border-l-4 border-purple-600 dark:border-primary-container rounded-sm">
-                            <strong class="text-purple-700 dark:text-primary block mb-1">🌍 IP Public (Alamat Resmi Internet Dunia):</strong>
+                            <strong class="text-purple-700 dark:text-primary block mb-1 flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">public</span> IP Public (Alamat Resmi Internet Dunia):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
                                 Alamat unik global yang diberikan oleh Provider Internet (Indihome/Biznet/Telkomsel). Ini adalah alamat yang tampak oleh Google atau YouTube saat Anda berselancar di internet.
                             </p>
@@ -377,13 +610,13 @@
                     </div>
                     <div class="flex flex-col gap-3 text-sm text-slate-800 dark:text-on-surface">
                         <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 rounded-sm border border-slate-200 dark:border-brand-border">
-                            <strong class="text-slate-900 dark:text-on-surface block mb-1">🔄 IP Dinamik (DHCP Server):</strong>
+                            <strong class="text-slate-900 dark:text-on-surface block mb-1 flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">sync</span> IP Dinamik (DHCP Server):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
                                 IP yang dipinjamkan secara otomatis oleh Router saat Anda menyalakan WiFi. Mirip seperti <strong>nomor antrian minimarket</strong> — alamat IP ini bisa berganti-ganti tiap kali Anda terhubung ulang.
                             </p>
                         </div>
                         <div class="bg-slate-50 dark:bg-brand-surface-inset p-3 rounded-sm border border-slate-200 dark:border-brand-border">
-                            <strong class="text-slate-900 dark:text-on-surface block mb-1">📌 IP Statik (Diatur Manual):</strong>
+                            <strong class="text-slate-900 dark:text-on-surface block mb-1 flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">push_pin</span> IP Statik (Diatur Manual):</strong>
                             <p class="text-xs text-slate-600 dark:text-on-surface-variant">
                                 IP yang dikunci dan diketik secara manual pada perangkat. Biasanya dipakai pada <strong>Server Website, Printer Kantor, atau Kamera CCTV</strong> agar lokasinya tetap dan tidak membuat bingung perangkat lain.
                             </p>
@@ -475,39 +708,149 @@
 
             </div>
 
-            <!-- Mengapa Subnetting CIDR Sangat Penting & Wildcard Mask -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Wildcard Mask & IP Khusus (127.0.0.1) -->
-                <section class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-3 shadow-md transition-colors">
-                    <h3 class="font-headline-md text-lg font-bold text-sky-700 dark:text-sky-300 flex items-center gap-2">
-                        <span class="material-symbols-outlined">shield</span>
-                        Wildcard Mask &amp; IP Khusus (Localhost 127.0.0.1)
-                    </h3>
-                    <div class="flex flex-col gap-2 text-xs md:text-sm text-slate-700 dark:text-on-surface-variant leading-relaxed">
-                        <p>
-                            <strong>Wildcard Mask:</strong> Merupakan kebalikan biner (*inversi*) dari Subnet Mask (misal mask <code>255.255.255.0</code> memiliki wildcard <code>0.0.0.255</code>). Digunakan dalam pembuatan aturan Firewall, Router Cisco, dan Mikrotik Access List (ACL).
-                        </p>
-                        <p>
-                            <strong>IP Localhost (127.0.0.1):</strong> Alamat IP khusus *Loopback* yang merujuk pada perangkat itu sendiri, biasanya dipakai pengembang untuk menguji aplikasi web lokal.
-                        </p>
+            <!-- SECTION KHUSUS: PENGANTAR & MODUL PANDUAN MENGERJAKAN LEMBAR KERJA SUBNETTING -->
+            <section class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-6 shadow-md transition-colors">
+                <div class="flex items-center gap-3 border-b border-slate-200 dark:border-brand-border pb-4">
+                    <span class="material-symbols-outlined text-purple-600 dark:text-primary text-3xl">school</span>
+                    <div>
+                        <h2 class="font-headline-md text-xl font-bold text-slate-900 dark:text-on-surface">Pengantar &amp; Panduan Mengisi Lembar Kerja (Worksheet) Subnetting</h2>
+                        <p class="text-xs text-slate-500 dark:text-on-surface-variant">Modul panduan langkah-demi-langkah bagi siswa / pemula untuk menyelesaikan tabel matriks tugas jaringan</p>
                     </div>
-                </section>
+                </div>
 
-                <!-- Mengapa Metode CIDR Sangat Penting -->
-                <section class="bg-white dark:bg-brand-surface border border-slate-300 dark:border-brand-border p-6 rounded-sm flex flex-col gap-3 shadow-md transition-colors">
-                    <h3 class="font-headline-md text-lg font-bold text-purple-700 dark:text-primary flex items-center gap-2">
-                        <span class="material-symbols-outlined">lightbulb</span>
-                        Mengapa Metode CIDR (Subnetting) Sangat Penting?
-                    </h3>
-                    <p class="text-xs md:text-sm text-slate-700 dark:text-on-surface-variant leading-relaxed">
-                        Dahulu, sistem pengalamatan IP terbagi kaku menjadi Kelas A, B, dan C. Namun jika sebuah kantor membutuhkan 300 komputer, mereka terpaksa harus menyewa 1 blok Kelas B (65.534 IP), sehingga membuang lebih dari 65.000 IP secara cuma-cuma!
+                <!-- Banner Pengantar Awam -->
+                <div class="bg-amber-50 dark:bg-brand-surface-inset border-l-4 border-amber-500 p-4 rounded-sm flex flex-col gap-2 text-xs">
+                    <div class="font-bold text-amber-800 dark:text-amber-300 flex items-center gap-1.5 text-sm">
+                        <span class="material-symbols-outlined text-amber-500 text-lg">lightbulb</span>
+                        Bagaimana Cara Mengisi Matriks Tabel Tugas Jaringan?
+                    </div>
+                    <p class="text-slate-700 dark:text-on-surface-variant leading-relaxed">
+                        Jika Anda mendapatkan lembar kerja (worksheet) berisi daftar <code>IP Network/Prefix</code> dan diminta mengisi parameter seperti <em>IP Private/Public, IP Class, IP Network, Host Start, Broadcast, IP Total Host, dan Netmask</em> — ikuti 4 aturan praktis di bawah ini:
                     </p>
-                    <p class="text-xs md:text-sm text-slate-700 dark:text-on-surface-variant leading-relaxed">
-                        Dengan metode <strong>CIDR (Classless Inter-Domain Routing)</strong> atau Notasi Prefix (seperti <code>/23</code> atau <code>/24</code>), jaringan dapat dipotong secara fleksibel dan presisi sesuai jumlah komputer yang dibutuhkan tanpa ada alamat IP yang terbuang sia-sia.
-                    </p>
-                </section>
-            </div>
+                </div>
 
+                <!-- Grid Modul Panduan Pengisian -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    
+                    <!-- Card 1: IP Private/Public & Class -->
+                    <div class="bg-slate-50 dark:bg-brand-surface-inset p-4 rounded border border-slate-200 dark:border-brand-border flex flex-col gap-2">
+                        <h3 class="font-bold text-purple-700 dark:text-primary flex items-center gap-1.5 text-sm">
+                            <span class="material-symbols-outlined text-base">fact_check</span>
+                            1. Menentukan IP Private/Public &amp; IP Class
+                        </h3>
+                        <p class="text-slate-600 dark:text-on-surface-variant leading-relaxed">
+                            Cukup perhatikan <strong>Oktet Pertama (Angka Paling Depan)</strong> pada IP:
+                        </p>
+                        <ul class="space-y-1 text-[11px] bg-white dark:bg-background p-2.5 rounded border border-slate-200 dark:border-brand-border font-mono">
+                            <li>• <strong>10.x.x.x</strong> = Private (Class A)</li>
+                            <li>• <strong>172.16.x.x s/d 172.31.x.x</strong> = Private (Class B)</li>
+                            <li>• <strong>192.168.x.x</strong> = Private (Class C)</li>
+                            <li>• <strong>Di luar rentang di atas</strong> = Public</li>
+                        </ul>
+                        <span class="text-[11px] text-slate-500 dark:text-on-surface-variant italic">Kategori Kelas: Class A (1-126), Class B (128-191), Class C (192-223).</span>
+                    </div>
+
+                    <!-- Card 2: Netmask & Total Host -->
+                    <div class="bg-slate-50 dark:bg-brand-surface-inset p-4 rounded border border-slate-200 dark:border-brand-border flex flex-col gap-2">
+                        <h3 class="font-bold text-blue-700 dark:text-secondary flex items-center gap-1.5 text-sm">
+                            <span class="material-symbols-outlined text-base">calculate</span>
+                            2. Menentukan Netmask &amp; IP Total (Host)
+                        </h3>
+                        <p class="text-slate-600 dark:text-on-surface-variant leading-relaxed">
+                            Lihat angka Notasi Prefix <code>/n</code> di belakang IP:
+                        </p>
+                        <ul class="space-y-1 text-[11px] bg-white dark:bg-background p-2.5 rounded border border-slate-200 dark:border-brand-border font-mono">
+                            <li>• <strong>Sisa Bit Host ($H$)</strong> = $32 - n$</li>
+                            <li>• <strong>IP Total (Host Usable)</strong> = $2^H - 2$</li>
+                            <li>• <strong>Netmask</strong> = Format desimal 4-oktet dari bit 1 sebanyak $n$. (Lihat tab Tabel CIDR untuk referensi cepat).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 3: Network, Host Start, Broadcast -->
+                    <div class="bg-slate-50 dark:bg-brand-surface-inset p-4 rounded border border-slate-200 dark:border-brand-border flex flex-col gap-2">
+                        <h3 class="font-bold text-emerald-700 dark:text-tertiary flex items-center gap-1.5 text-sm">
+                            <span class="material-symbols-outlined text-base">numbers</span>
+                            3. Menentukan Network, Host Start, &amp; Broadcast
+                        </h3>
+                        <p class="text-slate-600 dark:text-on-surface-variant leading-relaxed">
+                            Alokasi alamat IP di dalam blok subnet:
+                        </p>
+                        <ul class="space-y-1 text-[11px] bg-white dark:bg-background p-2.5 rounded border border-slate-200 dark:border-brand-border font-mono">
+                            <li>• <strong>IP Network</strong> = Alamat terdepan (semua host bit = 0)</li>
+                            <li>• <strong>IP Host Start</strong> = IP Network + 1</li>
+                            <li>• <strong>IP Broadcast</strong> = Alamat terbelakang (semua host bit = 1)</li>
+                            <li>• <strong>IP Host End</strong> = IP Broadcast - 1</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 4: Soal Reverse Subnetting -->
+                    <div class="bg-slate-50 dark:bg-brand-surface-inset p-4 rounded border border-slate-200 dark:border-brand-border flex flex-col gap-2">
+                        <h3 class="font-bold text-amber-700 dark:text-amber-400 flex items-center gap-1.5 text-sm">
+                            <span class="material-symbols-outlined text-base">autorenew</span>
+                            4. Soal Dibalik (Diketahui Kebutuhan Host)
+                        </h3>
+                        <p class="text-slate-600 dark:text-on-surface-variant leading-relaxed">
+                            Jika soal menentukan jumlah <strong>IP Total (Host)</strong>:
+                        </p>
+                        <ul class="space-y-1 text-[11px] bg-white dark:bg-background p-2.5 rounded border border-slate-200 dark:border-brand-border font-mono">
+                            <li>1. Cari pangkat 2 terkecil ($2^H - 2$) yang mencukupi.</li>
+                            <li>2. Notasi Prefix = $32 - H$.</li>
+                            <li>3. Contoh: Butuh 500 Host $\rightarrow$ $2^9 - 2 = 510 \ge 500 \rightarrow H=9 \rightarrow$ Prefix **`/23`**.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Contoh Langkah Mengerjakan 1 Kasus Soal -->
+                <div class="bg-purple-50/70 dark:bg-brand-surface-inset p-5 rounded border border-purple-200 dark:border-brand-border text-xs flex flex-col gap-3">
+                    <div class="flex items-center justify-between border-b border-purple-200 dark:border-brand-border pb-2">
+                        <h3 class="font-bold text-purple-800 dark:text-primary flex items-center gap-2 text-sm">
+                            <span class="material-symbols-outlined text-base">assignment</span>
+                            Contoh Kasus Pengisian Matriks (Soal: 172.20.10.0/27)
+                        </h3>
+                        <span class="px-2 py-0.5 rounded bg-purple-600 text-white font-mono text-[10px] font-bold">Langkah Uji Coba</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 font-mono text-[11px]">
+                        <div class="bg-white dark:bg-background p-2 rounded border border-purple-100 dark:border-brand-border">
+                            <span class="text-[10px] text-slate-400 block font-sans">IP Private/Public</span>
+                            <strong class="text-emerald-600">Private</strong> <span class="text-[9px] text-slate-500 font-sans block">(172.20 ada di 172.16-31)</span>
+                        </div>
+                        <div class="bg-white dark:bg-background p-2 rounded border border-purple-100 dark:border-brand-border">
+                            <span class="text-[10px] text-slate-400 block font-sans">IP Class</span>
+                            <strong class="text-purple-700 dark:text-primary">Class B</strong> <span class="text-[9px] text-slate-500 font-sans block">(172 masuk rentang Class B)</span>
+                        </div>
+                        <div class="bg-white dark:bg-background p-2 rounded border border-purple-100 dark:border-brand-border">
+                            <span class="text-[10px] text-slate-400 block font-sans">Netmask</span>
+                            <strong class="text-slate-800 dark:text-on-surface">255.255.255.224</strong> <span class="text-[9px] text-slate-500 font-sans block">(Prefix /27)</span>
+                        </div>
+                        <div class="bg-white dark:bg-background p-2 rounded border border-purple-100 dark:border-brand-border">
+                            <span class="text-[10px] text-slate-400 block font-sans">IP Total (Host)</span>
+                            <strong class="text-blue-600">30 Host Usable</strong> <span class="text-[9px] text-slate-500 font-sans block">(Rumus: 2^5 - 2 = 30)</span>
+                        </div>
+                        <div class="bg-white dark:bg-background p-2 rounded border border-purple-100 dark:border-brand-border">
+                            <span class="text-[10px] text-slate-400 block font-sans">IP Network</span>
+                            <strong class="text-slate-800 dark:text-on-surface">172.20.10.0</strong> <span class="text-[9px] text-slate-500 font-sans block">(Alamat Awal)</span>
+                        </div>
+                        <div class="bg-white dark:bg-background p-2 rounded border border-purple-100 dark:border-brand-border">
+                            <span class="text-[10px] text-slate-400 block font-sans">IP Host Start</span>
+                            <strong class="text-emerald-600">172.20.10.1</strong> <span class="text-[9px] text-slate-500 font-sans block">(Network + 1)</span>
+                        </div>
+                        <div class="bg-white dark:bg-background p-2 rounded border border-purple-100 dark:border-brand-border">
+                            <span class="text-[10px] text-slate-400 block font-sans">IP Host End</span>
+                            <strong class="text-emerald-600">172.20.10.30</strong> <span class="text-[9px] text-slate-500 font-sans block">(Broadcast - 1)</span>
+                        </div>
+                        <div class="bg-white dark:bg-background p-2 rounded border border-purple-100 dark:border-brand-border">
+                            <span class="text-[10px] text-slate-400 block font-sans">IP Broadcast</span>
+                            <strong class="text-rose-600">172.20.10.31</strong> <span class="text-[9px] text-slate-500 font-sans block">(Alamat Akhir)</span>
+                        </div>
+                    </div>
+                    <div class="text-[11px] text-slate-600 dark:text-on-surface-variant flex items-center gap-1 mt-1">
+                        <span class="material-symbols-outlined text-sm text-purple-600">touch_app</span>
+                        <span>Anda juga bisa mengetik <code>172.20.10.0</code> dan memilih <code>/27</code> pada tab <strong>Kalkulator Subnetting</strong> untuk memverifikasi secara langsung!</span>
+                    </div>
+                </div>
+            </section>
         </div>
 
     </main>
